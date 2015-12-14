@@ -1,6 +1,8 @@
 //function prototypes
 
-void pollThermocouple();
+void pollThermocouples();
 void initializeGPIO();
 void printSensorResponse();
 int calcFarenheit(int response[]);
+
+#define ever ;;
