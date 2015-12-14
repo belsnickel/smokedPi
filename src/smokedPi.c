@@ -4,9 +4,6 @@
 #include <wiringPi.h>
 #include <unistd.h>
 
-
-int main()
-{
 	int temp1Clk = 14; //gpio 11 for temp sensor 1 clk
 	int temp1Data = 13; // gpio 9 for receiving sensor data
 	int temp1CS = 10; //Chip select for temp sensor 1
@@ -16,6 +13,9 @@ int main()
 	int tempSensor1Response[32]; //response from max31855 chip stored here
 	int tempSensor2Response[32];
 
+int main()
+{
+	
 	error = wiringPiSetup();
 	if (error == -1)
 	{
