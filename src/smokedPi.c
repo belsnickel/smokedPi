@@ -74,7 +74,7 @@ void pollThermocouples(){
 
 void initializeGPIO(){
 	
-		error = wiringPiSetup();
+	error = wiringPiSetup();
 	if (error == -1)
 	{
 		printf("Error in wiringPiSetup \n");
