@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include <wiringPiSPI.h>
 #include <wiringPi.h>
 #include <unistd.h>
 #include <smokedPi.h>
