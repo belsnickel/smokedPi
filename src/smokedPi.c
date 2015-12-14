@@ -26,7 +26,7 @@ int main()
 	
 	
 	for(ever){
-		digitalWrite(heartBeatPin,HIGH);
+		
 		pollThermocouples();
 		digitalWrite(heartBeatPin,LOW);
 		usleep(1000000);
@@ -37,6 +37,7 @@ int main()
 void pollThermocouples(){
 	
 	int i;
+	digitalWrite(heartBeatPin,HIGH);
 	digitalWrite(temp1CS,LOW); //chip select
 	usleep(500);
 	for(i = 0; i<32; i++)
