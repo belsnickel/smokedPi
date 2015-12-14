@@ -3,6 +3,8 @@
 #include <wiringPiSPI.h>
 #include <wiringPi.h>
 #include <unistd.h>
+#include <smokedPi.h>
+
 
 	int temp1Clk = 14; //gpio 11 for temp sensor 1 clk
 	int temp1Data = 13; // gpio 9 for receiving sensor data
@@ -15,13 +17,6 @@
 
 int main()
 {
-	
-	error = wiringPiSetup();
-	if (error == -1)
-	{
-		printf("error");
-	}
-	
 	//setup gpio pins and set initial state
 	initializeGPIO();
 	
@@ -31,9 +26,10 @@ int main()
 	digitalWrite(temp2CS,HIGH);
 	
 	
+	for(ever){
+		
+		pollThermocouples();
 	
-	while(1){
-	pollThermocouples();
 	}
 	return 0;
 }
@@ -76,6 +72,13 @@ void pollThermocouples(){
 }
 
 void initializeGPIO(){
+	
+		error = wiringPiSetup();
+	if (error == -1)
+	{
+		printf("Error in wiringPiSetup \n");
+	}
+	
 	pinMode(temp1CS,OUTPUT); //chip select 1
 	pinMode(temp1Data,INPUT);
 	pinMode(temp1Clk,OUTPUT);
