@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <smokedPi.h>
 
-
+	int heartBeatPin = 6;
 	int temp1Clk = 14; //gpio 11 for temp sensor 1 clk
 	int temp1Data = 13; // gpio 9 for receiving sensor data
 	int temp1CS = 10; //Chip select for temp sensor 1
@@ -26,9 +26,10 @@ int main()
 	
 	
 	for(ever){
-		
+		digitalWrite(heartBeatPin,HIGH);
 		pollThermocouples();
-	
+		digitalWrite(heartBeatPin,LOW);
+		usleep(1000000);
 	}
 	return 0;
 }
@@ -67,7 +68,7 @@ void pollThermocouples(){
 	//printSensorResponse(tempSensorResponse);
 	printf("Temp in farenheit is %d and %d",calcFarenheit(tempSensor1Response),calcFarenheit(tempSensor2Response)); 
 	printf("\n");
-	usleep(100000);
+	usleep(1000000);
 }
 
 void initializeGPIO(){
@@ -78,6 +79,7 @@ void initializeGPIO(){
 		printf("Error in wiringPiSetup \n");
 	}
 	
+	pinMode(heartBeatPin,OUTPUT);
 	pinMode(temp1CS,OUTPUT); //chip select 1
 	pinMode(temp1Data,INPUT);
 	pinMode(temp1Clk,OUTPUT);
