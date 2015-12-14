@@ -4,6 +4,7 @@
 #include <wiringPi.h>
 #include <unistd.h>
 
+
 int main()
 {
 	int temp1Clk = 14; //gpio 11 for temp sensor 1 clk
@@ -30,7 +31,7 @@ int main()
 	digitalWrite(temp2CS,HIGH);
 	
 	
-	int i;
+	
 	while(1){
 	pollThermocouples();
 	}
@@ -39,6 +40,7 @@ int main()
 
 void pollThermocouples(){
 	
+	int i;
 	digitalWrite(temp1CS,LOW); //chip select
 	usleep(500);
 	for(i = 0; i<32; i++)
