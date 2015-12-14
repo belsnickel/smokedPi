@@ -75,7 +75,7 @@ void pollThermocouples(){
 	usleep(100000);
 }
 
-void intitializeGPIO(){
+void initializeGPIO(){
 	pinMode(temp1CS,OUTPUT); //chip select 1
 	pinMode(temp1Data,INPUT);
 	pinMode(temp1Clk,OUTPUT);
