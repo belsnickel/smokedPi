@@ -7,12 +7,13 @@
 int main()
 {
 	int temp1Clk = 14; //gpio 11 for temp sensor 1 clk
-	
 	int temp1Data = 13; // gpio 9 for receiving sensor data
-	
 	int temp1CS = 10; //Chip select for temp sensor 1
 	int temp2CS = 11;
 	int error = -1;
+
+	int tempSensor1Response[32]; //response from max31855 chip stored here
+	int tempSensor2Response[32];
 
 	error = wiringPiSetup();
 	if (error == -1)
@@ -21,23 +22,25 @@ int main()
 	}
 	
 	//setup gpio pins and set initial state
-	pinMode(temp1CS,OUTPUT); //chip select 1
-	pinMode(temp1Data,INPUT);
-	pinMode(temp1Clk,OUTPUT);
-	pinMode(temp2CS,OUTPUT);
+	initializeGPIO();
+	
 	//set initial state for each pin
 	digitalWrite(temp1CS,HIGH);
 	digitalWrite(temp1Clk,LOW);
 	digitalWrite(temp2CS,HIGH);
+	
+	
 	int i;
 	while(1){
-	//toggle clock and get 32 bits worth of data
+	pollThermocouples();
+	}
+	return 0;
+}
+
+void pollThermocouples(){
+	
 	digitalWrite(temp1CS,LOW); //chip select
 	usleep(500);
-
-	int tempSensor1Response[32]; //response from max31855 chip stored here
-	int tempSensor2Response[32];
-
 	for(i = 0; i<32; i++)
 	{
 		digitalWrite(temp1Clk,HIGH);
@@ -68,8 +71,13 @@ int main()
 	printf("Temp in farenheit is %d and %d",calcFarenheit(tempSensor1Response),calcFarenheit(tempSensor2Response)); 
 	printf("\n");
 	usleep(100000);
-	}
-	return 0;
+}
+
+void intitializeGPIO(){
+	pinMode(temp1CS,OUTPUT); //chip select 1
+	pinMode(temp1Data,INPUT);
+	pinMode(temp1Clk,OUTPUT);
+	pinMode(temp2CS,OUTPUT);
 }
 
 void printSensorResponse(int response[])
