@@ -113,7 +113,9 @@ void initOLED(){
 
 void command(unsigned char c) {
 	//DC is LOW for command
-		
+	digitalWrite(dc,LOW);
+	transfer(c);
+	digitalWrite(dc,HIGH);
 }
 
 void data(unsigned char c) {

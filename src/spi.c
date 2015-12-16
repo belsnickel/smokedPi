@@ -26,4 +26,6 @@ public void transfer(unsigned char data) {
 		usleep(10);
 		digitalWrite(clock, LOW);
 	}
+	usleep(10);
+	digitalWrite(cs,HIGH);
 }
