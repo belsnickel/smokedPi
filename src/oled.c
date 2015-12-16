@@ -1,7 +1,7 @@
 #include <oled.h>
 #include "spi.c"
 
-extern const unsigned char PROGMEM font[];
+extern const unsigned char font[];
 
 static unsigned char buffer[SSD1305_LCDHEIGHT * SSD1305_LCDWIDTH / 8] = { 
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -112,12 +112,12 @@ void initOLED(){
 }
 
 void command(unsigned char c) {
-	
+	//DC is LOW for command
 		
 }
 
 void data(unsigned char c) {
-	
+	//DC is HiGH for data 
 	
 }
 
