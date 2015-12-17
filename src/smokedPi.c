@@ -3,6 +3,8 @@
 #include <wiringPi.h>
 #include <unistd.h>
 #include <smokedPi.h>
+#include <oled.c>
+#include <gfx.h>
 
 	int heartBeatPin = 6;
 	int temp1Clk = 14; //gpio 11 for temp sensor 1 clk
@@ -13,11 +15,15 @@
 
 	int tempSensor1Response[32]; //response from max31855 chip stored here
 	int tempSensor2Response[32];
+	
+	int meatTemp = -1;
+	int grillTemp = -1;
 
 int main()
 {
 	//setup gpio pins and set initial state
 	initializeGPIO();
+	initializeOLED();
 	
 	//set initial state for each pin
 	digitalWrite(temp1CS,HIGH);
@@ -28,12 +34,40 @@ int main()
 	for(ever){
 		
 		pollThermocouples();
+		displayTempOLED(meatTemp, grillTemp);
+		
+		usleep(1000000);
 		digitalWrite(heartBeatPin,LOW);
 		usleep(1000000);
 	}
 	return 0;
 }
 
+void displayTempOLED(int temp1, int temp2) {
+	//send display data?
+	for (uint8_t rot=0; rot < 4; rot++) {
+    display.setRotation(rot);
+    display.clearDisplay();
+    // text display tests
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0,0);
+    display.println("Hello, world!");
+    display.setTextColor(BLACK, WHITE); // 'inverted' text
+    display.println(3.141592);
+    display.setTextSize(2);
+    display.setTextColor(WHITE);
+    display.print("0x"); display.println(0xDEADBEEF, HEX);
+    display.display();
+    delay(1000);
+  }
+	
+}
+
+void initializeOLED() {
+	//send command to turn on and configure oled
+	initOLED();
+}
 void pollThermocouples(){
 	
 	int i;
@@ -67,9 +101,12 @@ void pollThermocouples(){
 	digitalWrite(temp2CS,HIGH);
 
 	//printSensorResponse(tempSensorResponse);
+	grillTemp = calcFarenheit(tempSensor1Response);
+	meatTemp = calcFarenheit(tempSensor2Response);
+	
 	printf("Temp in farenheit is %d and %d",calcFarenheit(tempSensor1Response),calcFarenheit(tempSensor2Response)); 
 	printf("\n");
-	usleep(1000000);
+	//usleep(1000000);
 }
 
 void initializeGPIO(){

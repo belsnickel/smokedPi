@@ -1,5 +1,6 @@
 #include <oled.h>
 #include "spi.c"
+#include <gfx.h>
 
 extern const unsigned char font[];
 
@@ -72,6 +73,12 @@ static unsigned char buffer[SSD1305_LCDHEIGHT * SSD1305_LCDWIDTH / 8] = {
 
 void initOLED(){
 	//send command to initialize display ssd1305 chip 128x64
+	digitalWrite(displayRst, HIGH);
+	usleep(1000);
+	digitalWrite(displayRst,LOW);
+	usleep(10000);
+	digitalWrite(displayRst, HIGH);
+	usleep(1000);
 	
 	command(SSD1305_DISPLAYOFF);                    // 0xAE
 	command(SSD1305_SETLOWCOLUMN | 0x4);  // low col = 0
@@ -114,29 +121,45 @@ void initOLED(){
 void command(unsigned char c) {
 	//DC is LOW for command
 	digitalWrite(dc,LOW);
+	usleep(10);
 	transfer(c);
 	digitalWrite(dc,HIGH);
+	usleep(10);
 }
 
 void data(unsigned char c) {
 	//DC is HiGH for data 
-	
+	digitalWrite(displayDC, HIGH);
+	usleep(10);
+	transfer(c);
+	usleep(10);
 }
 
 void display() {
-	
-	
+	int i = 0;
+  	unsigned char page = 0;
+
+    for(; page<8; page++) {
+    
+		command(SSD1305_SETPAGESTART + page);
+		command(0x00);
+		command(0x10);
+		
+      	digitalWrite(cs, HIGH);
+      	digitalWrite(dc, HIGH);
+      	digitalWrite(cs, LOW);
+      
+			for(uint8_t x=0; x<128; x++) {
+				transfer(buffer[i++]);
+			}
+      
+		digitalWrite(cs, HIGH);	
 }
 
-void clear() {
-	
-	
+void clearDisplay() {
+	memset(buffer, 0, (SSD1305_LCDWIDTH*SSD1305_LCDHEIGHT/8));
 }
 
-void spiTransfer(unsigned char x) {
-	
-	
-}
 void invertDisplay(unsigned char i) {
 	if(i) {
 		command(SSD1305_INVERTDISPLAY);

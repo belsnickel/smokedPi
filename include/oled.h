@@ -39,3 +39,9 @@
 #define SSD1305_SETPRECHARGE 0xD9
 #define SSD1305_SETCOMPINS 0xDA
 #define SSD1305_SETVCOMLEVEL 0xDB
+
+#define displayCS 8
+#define displayClk 9
+#define displayData 7
+#define displayDC 0
+#define displayRst 2
