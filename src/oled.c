@@ -152,7 +152,7 @@ void display() {
       	digitalWrite(displayCS, LOW);
 		  
       	int x;
-			for(x = 0; x <1 28; x++) {
+			for(x = 0; x < 128; x++) {
 				transfer(buffer[i++]);
 			}
       
