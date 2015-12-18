@@ -150,12 +150,15 @@ void display() {
       	digitalWrite(displayCS, HIGH);
       	digitalWrite(displayDC, HIGH);
       	digitalWrite(displayCS, LOW);
-      
-			for(int x = 0; x <1 28; x++) {
+		  
+      	int x;
+			for(x = 0; x <1 28; x++) {
 				transfer(buffer[i++]);
 			}
       
-		digitalWrite(cs, HIGH);	
+		digitalWrite(displayCS, HIGH);	
+		ulseep(10);
+	}
 }
 
 void clearDisplay() {
