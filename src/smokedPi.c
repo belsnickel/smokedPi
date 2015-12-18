@@ -1,6 +1,6 @@
 
 #include "smokedPi.h"
-
+#include "oled.c"
 
 	int heartBeatPin = 6;
 	int temp1Clk = 14; //gpio 11 for temp sensor 1 clk

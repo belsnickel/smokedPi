@@ -7,7 +7,7 @@ int calcFarenheit(int response[]);
 
 #define ever ;;
 
-#include "oled.c"
+
 #include "gfx.h"
 #include <stdio.h>
 #include <math.h>
