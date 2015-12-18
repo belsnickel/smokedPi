@@ -152,6 +152,7 @@ void display() {
       	int x;
 			for(x = 0; x < 128; x++) {
 				transfer(buffer[i++]);
+				printf(i);
 			}
       
 		digitalWrite(displayCS, HIGH);	
