@@ -40,8 +40,8 @@
 #define SSD1305_SETCOMPINS 0xDA
 #define SSD1305_SETVCOMLEVEL 0xDB
 
-#define displayCS 8
-#define displayClk 9
-#define displayData 7
-#define displayDC 0
-#define displayRst 2
+#define displayCS 8 //display pin 15
+#define displayClk 7 //display pin 7
+#define displayData 9 //display pin 8
+#define displayDC 0 //display pin 4
+#define displayRst 2 // display pin 16
