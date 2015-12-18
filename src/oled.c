@@ -122,10 +122,10 @@ void initOLED(){
 
 void command(unsigned char c) {
 	//DC is LOW for command
-	digitalWrite(dc,LOW);
+	digitalWrite(displayDC,LOW);
 	usleep(10);
 	transfer(c);
-	digitalWrite(dc,HIGH);
+	digitalWrite(displayDC,HIGH);
 	usleep(10);
 }
 
@@ -147,11 +147,11 @@ void display() {
 		command(0x00);
 		command(0x10);
 		
-      	digitalWrite(cs, HIGH);
-      	digitalWrite(dc, HIGH);
-      	digitalWrite(cs, LOW);
+      	digitalWrite(displayCS, HIGH);
+      	digitalWrite(displayDC, HIGH);
+      	digitalWrite(displayCS, LOW);
       
-			for(uint8_t x=0; x<128; x++) {
+			for(int x = 0; x <1 28; x++) {
 				transfer(buffer[i++]);
 			}
       
@@ -173,7 +173,7 @@ void invertDisplay(unsigned char i) {
 }
 
 void drawPixel(int x, int y) {
-	if ((x >= 128 || (y >= 64 || (x < 0) || (y < 0))
+	if ((x >= 128) || (y >= 64) || (x < 0) || (y < 0))
     return;
 
   // x is which column

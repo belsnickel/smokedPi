@@ -2,7 +2,7 @@
 //according to data sheet looks like mode 1..so thats what ill use
 #include "oled.h"
 
-public void transfer(unsigned char data) {
+void transfer(unsigned char data) {
 	//define pin numbers in header
 	int bitpos, bitvalue;
 	
