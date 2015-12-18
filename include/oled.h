@@ -45,3 +45,10 @@
 #define displayData 9 //display pin 8
 #define displayDC 0 //display pin 4
 #define displayRst 2 // display pin 16
+
+void initOLED();
+void command(unsigned char c); 
+void data(unsigned char c);
+void clearDisplay();
+void invertDisplay(unsigned char i); 
+void drawPixel(int x, int y);
