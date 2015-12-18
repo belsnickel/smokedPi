@@ -8,7 +8,7 @@ void initializeGPIO();
 void printSensorResponse();
 int calcFarenheit(int response[]);
 
-
+void transfer(unsigned char data);
 
 
 #define ever ;;
