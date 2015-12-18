@@ -1,6 +1,7 @@
 //msb first and mode 0? = clock polarity = 0, clock idle is low and 
 //according to data sheet looks like mode 1..so thats what ill use
 #include "oled.h"
+#include <wiringPi.h>
 
 void transfer(unsigned char data) {
 	//define pin numbers in header
