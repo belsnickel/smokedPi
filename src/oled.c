@@ -1,6 +1,4 @@
-#include "oled.h"
-#include "spi.c"
-#include "gfx.h"
+#include "smokedPi.h"
 
 #define _BV(x)   (1 << x) 
 
