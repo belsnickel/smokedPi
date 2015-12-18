@@ -35,7 +35,7 @@ int main()
 		
 		pollThermocouples();
 		displayTempOLED(meatTemp, grillTemp);
-		
+		display();
 		usleep(1000000);
 		digitalWrite(heartBeatPin,LOW);
 		usleep(1000000);
@@ -45,22 +45,8 @@ int main()
 
 void displayTempOLED(int temp1, int temp2) {
 	//send display data?
-	for (uint8_t rot=0; rot < 4; rot++) {
-    display.setRotation(rot);
-    display.clearDisplay();
-    // text display tests
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-    display.setCursor(0,0);
-    display.println("Hello, world!");
-    display.setTextColor(BLACK, WHITE); // 'inverted' text
-    display.println(3.141592);
-    display.setTextSize(2);
-    display.setTextColor(WHITE);
-    display.print("0x"); display.println(0xDEADBEEF, HEX);
-    display.display();
-    delay(1000);
-  }
+
+  drawPixel(10,10);
 	
 }
 

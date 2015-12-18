@@ -1,6 +1,8 @@
-#include <oled.h>
+#include "oled.h"
 #include "spi.c"
-#include <gfx.h>
+#include "gfx.h"
+
+#define _BV(x)   (1 << x) 
 
 extern const unsigned char font[];
 
@@ -168,4 +170,15 @@ void invertDisplay(unsigned char i) {
 		command(SSD1305_NORMALDISPLAY);
 	}
 	
+}
+
+void drawPixel(int x, int y) {
+	if ((x >= 128 || (y >= 64 || (x < 0) || (y < 0))
+    return;
+
+  // x is which column
+ // if (color == WHITE) 
+    buffer[x+ (y/8)*SSD1305_LCDWIDTH] |= _BV((y%8));  
+//  else
+//    buffer[x+ (y/8)*SSD1305_LCDWIDTH] &= ~_BV((y%8)); 
 }
