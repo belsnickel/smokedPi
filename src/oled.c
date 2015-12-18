@@ -155,7 +155,7 @@ void display() {
 			}
       
 		digitalWrite(displayCS, HIGH);	
-		ulseep(10);
+		usleep(10);
 	}
 }
 
