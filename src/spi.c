@@ -10,7 +10,9 @@ void transfer(unsigned char data) {
 	digitalWrite(displayData, LOW);
 	usleep(10);
 	//clock low, data shifted in on rising edge
-	
+	digitalWrite(displayClk,LOW);
+    usleep(10);
+    
 	for(bitpos = 0; bitpos < 8; bitpos++) {
 		bitvalue = ((data >> (bitpos - 1)) & 0x01);
 		
