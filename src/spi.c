@@ -7,7 +7,7 @@ void transfer(unsigned char data) {
 	int bitpos, bitvalue;
 	
 	//chip select low
-	digitalWrite(displayData, LOW);
+	digitalWrite(displayCS, LOW);
 	usleep(10);
 	//clock low, data shifted in on rising edge
 	digitalWrite(displayClk,LOW);
