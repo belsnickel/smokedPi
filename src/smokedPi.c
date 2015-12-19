@@ -104,6 +104,12 @@ void initializeGPIO(){
 	pinMode(temp1Data,INPUT);
 	pinMode(temp1Clk,OUTPUT);
 	pinMode(temp2CS,OUTPUT);
+    
+    pinmode(displayCS,OUTPUT);
+    pinmode(displayClk,OUTPUT);
+    pinmode(displayData,OUTPUT);
+    pinmode(displayDC,OUTPUT);
+    pinmode(displayRst,OUTPUT);
 }
 
 void printSensorResponse(int response[])
