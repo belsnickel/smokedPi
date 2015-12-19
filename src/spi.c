@@ -29,6 +29,7 @@ void transfer(unsigned char data) {
 		//clock low
 		usleep(10);
 		digitalWrite(displayClk, LOW);
+        usleep(10);
 	}
 	usleep(10);
 	digitalWrite(displayCS, HIGH);
