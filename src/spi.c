@@ -33,4 +33,5 @@ void transfer(unsigned char data) {
 	}
 	usleep(10);
 	digitalWrite(displayCS, HIGH);
+    usleep(10);
 }

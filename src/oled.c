@@ -149,7 +149,8 @@ void display() {
       	digitalWrite(displayCS, HIGH);
       	digitalWrite(displayDC, HIGH);
       	digitalWrite(displayCS, LOW);
-		  
+		usleep(10);
+        
       	int x;
 			for(x = 0; x < 128; x++) {
 				transfer(buffer[i++]);
