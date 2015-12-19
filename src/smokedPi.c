@@ -31,7 +31,10 @@ int main()
 		
 		pollThermocouples();
 		displayTempOLED(meatTemp, grillTemp);
-		display();
+		//display();
+        command(0xA5);
+        command(0xA4);
+        
 		usleep(1000000);
 		digitalWrite(heartBeatPin,LOW);
 		usleep(1000000);
