@@ -123,6 +123,7 @@ void command(unsigned char c) {
 	digitalWrite(displayDC,LOW);
 	usleep(10);
 	transfer(c);
+    usleep(10);
 	digitalWrite(displayDC,HIGH);
 	usleep(10);
 }
