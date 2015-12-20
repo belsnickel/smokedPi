@@ -53,6 +53,11 @@ int main()
         usleep(1000000);
         digitalWrite(displayDC,LOW);
         
+         usleep(1000000);
+        digitalWrite(displayRst,HIGH);
+        usleep(1000000);
+        digitalWrite(displayRst,LOW);
+        
         usleep(1000000);
         digitalWrite(displayData,HIGH);
         usleep(1000000);
