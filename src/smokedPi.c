@@ -131,6 +131,12 @@ void initializeGPIO(){
     pinMode(displayData,OUTPUT);
     pinMode(displayDC,OUTPUT);
     pinMode(displayRst,OUTPUT);
+    
+    digitalWrite(displayClk,LOW);
+    digitalWrite(displayData,LOW);
+    digitalWrite(displayDC,LOW);
+    digitalWrite(displayRst,LOW);
+    digitalWrite(displayCS,LOW);
 }
 
 void printSensorResponse(int response[])
