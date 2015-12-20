@@ -146,7 +146,7 @@ void initializeGPIO(){
     digitalWrite(displayDC,LOW);
     digitalWrite(displayRst,LOW);
     digitalWrite(displayCS,LOW);
-    printf("GPIO pin initialized...");
+    printf("GPIO pin initialized...\n");
     usleep(10000000);
 }
 
