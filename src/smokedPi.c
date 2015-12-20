@@ -146,6 +146,8 @@ void initializeGPIO(){
     digitalWrite(displayDC,LOW);
     digitalWrite(displayRst,LOW);
     digitalWrite(displayCS,LOW);
+    printf("GPIO pin initialized...");
+    usleep(10000000);
 }
 
 void printSensorResponse(int response[])
