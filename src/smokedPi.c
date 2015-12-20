@@ -37,18 +37,22 @@ int main()
         
 		usleep(1000000);
 		digitalWrite(heartBeatPin,LOW);
+        
 		usleep(1000000);
         digitalWrite(displayClk,HIGH);
         usleep(1000000);
         digitalWrite(displayClk,LOW);
+        
         usleep(1000000);
         digitalWrite(displayCS,HIGH);
         usleep(1000000);
-        digitalWrite(displayCS,HIGH);
+        digitalWrite(displayCS,LOW);
+        
         usleep(1000000);
         digitalWrite(displayDC,HIGH);
         usleep(1000000);
         digitalWrite(displayDC,LOW);
+        
         usleep(1000000);
         digitalWrite(displayData,HIGH);
         usleep(1000000);
