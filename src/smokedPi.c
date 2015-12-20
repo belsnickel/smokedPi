@@ -30,7 +30,7 @@ int main()
 	for(ever){
 		
 		pollThermocouples();
-		displayTempOLED(meatTemp, grillTemp);
+		//displayTempOLED(meatTemp, grillTemp);
 		//display();
        // command(0xA5);
       //  command(0xA4);
