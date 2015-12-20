@@ -19,7 +19,7 @@ int main()
 {
 	//setup gpio pins and set initial state
 	initializeGPIO();
-	initializeOLED();
+	//initializeOLED();
 	
 	//set initial state for each pin
 	digitalWrite(temp1CS,HIGH);
