@@ -91,7 +91,7 @@ void pollThermocouples(){
 	
 	printf("Temp in farenheit is %d and %d",calcFarenheit(tempSensor1Response),calcFarenheit(tempSensor2Response)); 
 	printf("\n");
-	//usleep(1000000);
+	usleep(1000000);
 }
 
 void initializeGPIO(){
