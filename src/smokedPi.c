@@ -29,40 +29,13 @@ int main()
 	
 	for(ever){
 		
-		//pollThermocouples();
+		pollThermocouples();
 		//displayTempOLED(meatTemp, grillTemp);
 		//display();
        // command(0xA5);
       //  command(0xA4);
         
-		usleep(1000000);
-		digitalWrite(heartBeatPin,LOW);
-        
-		usleep(1000000);
-        digitalWrite(displayClk,HIGH);
-        usleep(1000000);
-        digitalWrite(displayClk,LOW);
-        
-        usleep(1000000);
-        digitalWrite(displayCS,HIGH);
-        usleep(1000000);
-        digitalWrite(displayCS,LOW);
-        
-        usleep(1000000);
-        digitalWrite(displayDC,HIGH);
-        usleep(1000000);
-        digitalWrite(displayDC,LOW);
-        
-         usleep(1000000);
-        digitalWrite(displayRst,HIGH);
-        usleep(1000000);
-        digitalWrite(displayRst,LOW);
-        
-        usleep(1000000);
-        digitalWrite(displayData,HIGH);
-        usleep(1000000);
-        digitalWrite(displayData,LOW);
-        usleep(1000000);
+
         
         
 	}
